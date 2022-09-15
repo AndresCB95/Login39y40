@@ -18,14 +18,26 @@ public class Usuario {
     @OneToOne(mappedBy = "usuario")
     private Persona persona;
 
-    public Usuario(String nombreUsuario, String password, String nombrePersona, Persona persona) {
+    @ManyToOne
+    private Perfil perfil;
+
+    public Usuario(String nombreUsuario, String password, String nombrePersona, Persona persona, Perfil perfil) {
         this.nombreUsuario = nombreUsuario;
         this.password = password;
         this.nombrePersona = nombrePersona;
         this.persona = persona;
+        this.perfil = perfil;
     }
 
     public Usuario() {
+    }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 
     public Persona getPersona() {

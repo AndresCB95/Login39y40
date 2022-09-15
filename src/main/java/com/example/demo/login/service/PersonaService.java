@@ -30,6 +30,10 @@ public class PersonaService {
         }
     }
 
+    public Persona getPeronaByUsuarioId(String idUsuario){
+        return personaRepository.findByUsuarioNombreUsuario(idUsuario);
+    }
+
     public Persona savePersona(Persona persona_param){
         return personaRepository.save(persona_param);
     }

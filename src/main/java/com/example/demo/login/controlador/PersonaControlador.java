@@ -19,6 +19,15 @@ public class PersonaControlador {
     @Autowired
     private PersonaService personaService;
 
+
+    @GetMapping("/persona/{id}/usuario")
+    public ResponseEntity<Persona> getIdUsuario(@PathVariable String id){
+        return new ResponseEntity<>(
+            personaService.getPeronaByUsuarioId(id),
+          HttpStatus.OK
+        );
+    }
+
     @GetMapping("/personas")
     public ResponseEntity<List<Persona>> getPersonas(){
         return new ResponseEntity<List<Persona>>(
