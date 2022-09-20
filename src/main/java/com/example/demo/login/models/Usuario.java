@@ -71,4 +71,15 @@ public class Usuario {
     public void setNombrePersona(String nombrePersona) {
         this.nombrePersona = nombrePersona;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nombreUsuario='" + nombreUsuario + '\'' +
+                ", password='" + password + '\'' +
+                ", nombrePersona='" + nombrePersona + '\'' +
+                ", persona=" + persona +
+                ", perfil=" + perfil +
+                '}';
+    }
 }

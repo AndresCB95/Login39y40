@@ -1,0 +1,13 @@
+.posicion-img{
+    width: 75px;
+}
+
+.boton-principal{
+    margin-left: 10%;
+    padding-left: 8px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background: antiquewhite;
+    color: blue;
+
+}
