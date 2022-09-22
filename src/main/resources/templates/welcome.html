@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -8,26 +8,55 @@
 <body>
 
 
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">Nombre Usuario</th>
-        <th scope="col">Password</th>
-        <th scope="col">Nombre Persona</th>
-        <th scope="col">Perfil</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="usuario : ${usuarios}">
-        <td th:text="${usuario.nombreUsuario}"></td>
-        <td th:text="${usuario.password}"></td>
-        <td th:text="${usuario.nombrePersona}"></td>
-        <td th:text="${usuario.perfil.nombre}"></td>
-    </tr>
-    </tbody>
-</table>
+<div sec:authorize="isAuthenticated()">
 
+    <form th:action="@{/logout}" method="post" >
 
+        <button type="submit"> Cerrar sesión </button>
+
+    </form>
+
+    <div sec:authorize="hasAnyRole('ADMIN','USER')">
+
+        <a href="/usuario/add"> Crear Usuario </a>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Nombre Usuario</th>
+                <th scope="col">Password</th>
+                <th scope="col">Nombre Persona</th>
+                <th scope="col">Perfil</th>
+                <th scope="col">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="usuario : ${usuarios}">
+                <td th:text="${usuario.nombreUsuario}"></td>
+                <td th:text="${usuario.password}"></td>
+                <td th:text="${usuario.nombrePersona}"></td>
+                <td th:text="${usuario.perfil.nombre}"></td>
+
+                <td>
+                    <div sec:authorize="hasAnyRole('ADMIN')">
+                        <form th:action="@{/usuario/delete/front/{id}(id=${usuario.nombreUsuario})}" th:method="delete">
+                            <button type="submit">Borrar Usuario</button>
+                        </form>
+                    </div>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div sec:authorize="!isAuthenticated()">
+
+    <a href="/login">
+    Iniciar sesión
+    </a>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>

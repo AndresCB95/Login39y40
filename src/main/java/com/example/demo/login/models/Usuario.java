@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.util.List;
 
 enum Rol{
-    ADMIN,
-    USER
+    ROLE_ADMIN,
+    ROLE_USER
 }
 
 @Entity
