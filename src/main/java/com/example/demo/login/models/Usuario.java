@@ -5,11 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.List;
 
-enum Rol{
-    ROLE_ADMIN,
-    ROLE_USER
-}
-
 @Entity
 @Table(name = "usuario")
 public class Usuario {

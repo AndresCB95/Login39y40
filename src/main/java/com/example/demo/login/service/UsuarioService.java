@@ -54,6 +54,14 @@ public class UsuarioService {
                 usuarioBd.setPassword(usuario_param.getPassword());
             }
 
+            if(usuario_param.getRoles() !=null){
+                usuarioBd.setRoles(usuario_param.getRoles());
+            }
+
+            if(usuario_param.getPerfil() !=null){
+                usuarioBd.setPerfil(usuario_param.getPerfil());
+            }
+
             return saveUsuario(usuarioBd);
 
         } catch (Exception e) {

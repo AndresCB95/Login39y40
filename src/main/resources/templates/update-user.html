@@ -8,10 +8,10 @@
 
 <div sec:authorize="isAuthenticated()">
 
-  <form th:object="${newUsuario}" method="post" th:action="@{/usuario/front}">
+  <form th:object="${UpdateUsuario}" th:method="patch" th:action="@{/usuario/front/{id}(id=*{nombreUsuario})}">
 
       <label for="emailInput">Email:</label>
-      <input id="emailInput" type="email" th:field="*{nombreUsuario}">
+      <input id="emailInput" type="email" th:field="*{nombreUsuario}" disabled>
 
       <label for="passwordInput">Password:</label>
       <input id="passwordInput" type="password" th:field="*{password}">
@@ -38,7 +38,7 @@
           </tbody>
       </table>
 
-      <button type="submit">Registrar Usuario</button>
+      <button type="submit">Actualizar Usuario</button>
 
   </form>
 

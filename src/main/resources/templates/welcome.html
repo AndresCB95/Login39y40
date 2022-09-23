@@ -43,6 +43,11 @@
                             <button type="submit">Borrar Usuario</button>
                         </form>
                     </div>
+                    <div>
+                        <form th:action="@{/usuario/update/front/{id}(id=${usuario.nombreUsuario})}" th:method="get">
+                            <button type="submit">Actualizar Usuario</button>
+                        </form>
+                    </div>
                 </td>
 
             </tr>
